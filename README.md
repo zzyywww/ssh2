@@ -14,6 +14,7 @@ are then integrated to produce the final hydrophobicity score.
 
 LIBSVM (Chang and Lin., 2011) was employed to construct the SVM sub-models. 
 
+
 ## Requirements
 
 python = ">=3.7.*"
@@ -21,6 +22,12 @@ pandas = ">=1.1.4"
 numpy = ">=1.18"
 
 ## Usage
+
+```
+git clone https://github.com/zzyywww/SSH2.git
+cd ssh2
+chmod 777 -R ./trained
+```
 ```
 import sys
 import pandas as pd
