@@ -126,7 +126,7 @@ class SSH2Model(BaseModel):
             cols = cols[-1:] + cols[:-1]
             df1 = df1[cols]
             df1.to_csv(f'{run_dir}/df_{str(flag)}.csv',sep=',',index=False)
-            model._generate_svm_file(f'{run_dir}/df_{str(flag)}.csv',f'{run_dir}/df_{str(flag)}.svm')
+            self._generate_svm_file(f'{run_dir}/df_{str(flag)}.csv',f'{run_dir}/df_{str(flag)}.svm')
             flag += 1
 
         trained_dir = Path("./trained")       
@@ -186,7 +186,7 @@ class SSH2Model(BaseModel):
                 probas.append(proba)
         
         
-        result = test_data[["antibody_name", "vh_protein_sequence", "vl_protein_sequence"]].copy()
+        result = df[["antibody_name", "vh_protein_sequence", "vl_protein_sequence"]].copy()
         result["HIC"] = result_df['Predict']
         result["SSH2_probability"] = probas
         return result
