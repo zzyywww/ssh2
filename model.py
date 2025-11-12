@@ -5,6 +5,7 @@ import os
 import pandas as pd
 from codes import readFasta, saveCode, CKSAAGP
 import json
+import platform
 
 from abdev_core import BaseModel
 
@@ -135,13 +136,21 @@ class SSH2Model(BaseModel):
         test_files = sorted([x for x in os.listdir(run_dir) if x.endswith('.svm')])     
 
         """predit using three submodels"""
+        system = platform.system()
+        if system == "Windows":
+            scale_exe = "svm-scale.exe"
+            predict_exe = "svm-predict.exe"
+        else:
+            scale_exe = "svm-scale"
+            predict_exe = "svm-predict"
+
         for i in range(3):
             """feature data scale"""
-            scale_cmd = f"{trained_dir}/svm-scale -r {trained_dir}/{range_files[i]} {run_dir}/{test_files[i]} > {run_dir}/temp.scale"
+            scale_cmd = f"{trained_dir}/{scale_exe} -r {trained_dir}/{range_files[i]} {run_dir}/{test_files[i]} > {run_dir}/temp.scale"
             os.system(scale_cmd)
 
             """predict"""
-            predict_cmd = f"{trained_dir}/svm-predict -b 1 {run_dir}/temp.scale {trained_dir}/{model_files[i]} {run_dir}/{i+1}_result.txt"
+            predict_cmd = f"{trained_dir}/{predict_exe} -b 1 {run_dir}/temp.scale {trained_dir}/{model_files[i]} {run_dir}/{i+1}_result.txt"
             os.system(predict_cmd)
 
 
