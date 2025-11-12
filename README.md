@@ -24,7 +24,7 @@ numpy = ">=1.18"
 ## Usage
 
 ```
-git clone https://github.com/zzyywww/SSH2.git
+https://github.com/zzyywww/ssh2.git
 cd ssh2
 chmod 777 -R ./trained
 ```
