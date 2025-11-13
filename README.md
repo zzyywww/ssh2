@@ -1,9 +1,5 @@
-# SSH2
+# SSH2 - CKSAAGP + SVM ensemble model for antibodies hydrophobic interaction prediction
 The SSH2.0 is a predictor that can be used to predict Hydrophobic interaction of monoclonal antibodies using sequences.
-
-# Your Model Name
-
-SSH2 - CKSAAGP + SVM ensemble model for antibodies hydrophobic interaction prediction
 
 ## Description
 
